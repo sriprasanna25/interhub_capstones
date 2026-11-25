@@ -1,0 +1,15 @@
+# Render Blueprint: push to GitHub, then New > Blueprint and select the repo.
+services:
+  - type: web
+    name: internhub
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz        # Render restarts the service if this fails
+    envVars:
+      - key: TRUST_PROXY
+        value: "true"                # Render sits behind a proxy, so use X-Forwarded-For for rate limiting
+      - key: LOG_LEVEL
+        value: info
+    # NOTE: the free plan has no persistent disk, so the SQLite file resets on each deploy
+    # (the 12 demo internships are re-seeded automatically). For durable data, upgrade the plan
+    # and add:  disk: { name: data, mountPath: /data, sizeGB: 1 }

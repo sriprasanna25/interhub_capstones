@@ -1,0 +1,15 @@
+{
+  "name": "internhub",
+  "version": "2.0.0",
+  "description": "Production-ready full-stack internship portal (zero runtime dependencies, Node 22+)",
+  "type": "module",
+  "scripts": {
+    "start": "node --no-warnings server/index.js",
+    "test": "node --no-warnings --test test/*.test.js",
+    "qa": "node --no-warnings scripts/qa.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  },
+  "engines": { "node": ">=22.13" }
+}
